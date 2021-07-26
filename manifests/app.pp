@@ -1,4 +1,4 @@
-node 'node1' {
+node 'node3' {
     notify {"***** NODE1 BLOCK *****":}
     include java::install, base
     
@@ -11,23 +11,6 @@ node 'node1' {
     
     tomcat::deploy { "sysfoo":
         deploy_url     => 'puppet:///modules/tomcat/sysfoo.war',
-        checksum_value => 'c808ccfcedfd7434993ddd15e14d8e4a'
-    }
-}
-
-node 'node2' {
-    notify {"***** NODE2 BLOCK *****":}
-    include java::install, base
-    
-    class{'::tomcat':
-        user  => 'tomcat',
-        group => 'tomcat',
-        xms   => '64m',
-        xmx   => '128m'
-    }
-    
-    tomcat::deploy { "sysfoo":
-        deploy_url => 'puppet:///modules/tomcat/sysfoo.war',
         checksum_value => 'c808ccfcedfd7434993ddd15e14d8e4a'
     }
 }
